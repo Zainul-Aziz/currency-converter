@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         String dollar = dollarAmount.getText().toString();
         Double dollars = Double.parseDouble(dollar);
         Double inr = 75.66 * dollars;
-        String toasttext = "= " + inr.toString() + " INR";
+        String str = String.format("%.2f", inr);
+        String toasttext = "= " + str + " INR";
         Toast.makeText(this, toasttext, Toast.LENGTH_SHORT).show();
     }
     @Override
