@@ -18,12 +18,21 @@ public class MainActivity extends AppCompatActivity {
     public void btnclick(View view)
     {
         EditText dollarAmount = (EditText) findViewById(R.id.dollar);
-        String dollar = dollarAmount.getText().toString();
-        Double dollars = Double.parseDouble(dollar);
-        Double inr = 75.66 * dollars;
-        String str = String.format("%.2f", inr);
-        String toasttext = "= " + str + " INR";
-        Toast.makeText(this, toasttext, Toast.LENGTH_SHORT).show();
+        String strRaw = dollarAmount.getText().toString();
+        String dollar = strRaw.trim();
+        if(dollar.length() == 0)
+        {
+            String errorText = "Empty Field");
+            Toast.makeText(this, errorText, Toast.LENGTH_SHORT).show();    
+        }
+        else
+        {
+            Double dollars = Double.parseDouble(dollar);
+            Double inr = 75.66 * dollars;
+            String str = String.format("%.2f", inr);
+            String toasttext = "= " + str + " INR";
+            Toast.makeText(this, toasttext, Toast.LENGTH_SHORT).show();
+        }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
